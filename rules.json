@@ -52,6 +52,21 @@
   },
   {
     "if": [
+      "(* (VB order)   ) "
+    ],
+    "then": {
+      "var": {
+        "meal": "(*\n(VP (VB order) (NP @))\n)"
+      },
+      "answer": [
+        "I have added ",
+        "~meal",
+        " to the order"
+      ]
+    }
+  },
+  {
+    "if": [
       "(*(NN *))"
     ],
     "then": {
@@ -77,27 +92,6 @@
         "Sorry, I don`t understand word '",
         "~nn",
         "'. Can you explain?"
-      ]
-    }
-  },
-  {
-    "if": [
-      "\n(*\n  (SBARQ\n(WHADVP (WRB Where))\n(* \n    (NN ticket) \n           \n)\n(. ?)))",
-      "\n(*\n  (SBARQ\n(WHADVP (WRB Where))\n(* \n    (NNS tickets) \n           \n)\n(. ?)))"
-    ],
-    "then": {
-      "var": {
-        "np": "(*\n(SBARQ\n(WHADVP (WRB Where))\n(SQ \n    (MD *)\n    (NP @)\n\n)\n(. ?)))",
-        "md": "(*\n(SBARQ\n  (WHADVP (WRB Where))\n  (SQ \n      (MD @)\n\n\n  )\n  (. ?)))",
-        "vp": "(*\n(SBARQ\n  (WHADVP (WRB Where))\n  (SQ \n      (MD *)\n      (NP *)\n      (VP @)\n\n\n  )\n  (. ?)))"
-      },
-      "answer": [
-        "~np",
-        " ",
-        "~md",
-        " ",
-        "~vp",
-        " here: https://concert.ua/uk"
       ]
     }
   }

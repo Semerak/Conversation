@@ -6,10 +6,12 @@ parser = CoreNLPParser(url='http://localhost:9000')
 
 
 def get_tree(sent: str) -> Tree:
+    """Return a tree from the lexical parser."""
     return next(parser.raw_parse(sent))
 
 
-def get_response(request, rules):
+def get_response(request: str, rules: str) -> str:
+    """Return a response from the request due to rules."""
     tree = get_tree(request)
     response = handler(tree, rules)
     return response
@@ -17,33 +19,7 @@ def get_response(request, rules):
 
 if __name__ == '__main__':
 
-    rules = load_rules("rules2.json")
-
-    # request = "Where can Dan buy a ticket?"
-    # print("You: ", request)
-    # response = get_response(request, rules)
-    # print("Bot: ", response)
-    #
-    # request = "How much does the ticket cost?"
-    # print("You: ", request)
-    # response = get_response(request, rules)
-    # print("Bot: ", response)
-    #
-    request = "How can the boy get to the library?"
-    print("You: ", request)
-    response = get_response(request, rules)
-    print("Bot: ", response)
-
-    request = "I want to order a hot dog."
-    print("You: ", request)
-    response = get_response(request, rules)
-    print("Bot: ", response)
-    #
-    # request = "Where to get tickets to Kyiv?"
-    # print("You: ", request)
-    # response = get_response(request, rules)
-    # print("Bot: ", response)
-
+    rules = load_rules("rules.json")
 
     while True:
         request = input("You: ")

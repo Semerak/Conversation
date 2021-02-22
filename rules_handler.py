@@ -6,21 +6,29 @@ from tree_extract import extract_words
 file_path = "rules.json"
 
 
-def load_rules(file_path):
+def load_rules(file_path: str) -> Tree:
+    """Loads rules form json file."""
     rules_json = []
+
     with open(file_path, 'r') as file:
         rules_json = json.loads(file.read())
     rules = []
+
     for rule_json in rules_json:
+
         rule = {}
         rule['if'] = []
+
         for condition in rule_json['if']:
             rule['if'].append(Tree.fromstring(condition))
+
         rule['then'] = {}
         vars = {}
         vars_json = rule_json['then']['var']
+
         for v in vars_json:
             vars[v] = Tree.fromstring(vars_json[v])
+
         rule['then']['var'] = vars
         rule['then']['answer'] = rule_json['then']['answer']
 
@@ -29,19 +37,26 @@ def load_rules(file_path):
     return rules
 
 
-def handler(sent_tree: Tree, rules: list):
+def handler(sent_tree: Tree, rules: list) -> str:
+    """Handle request tree due to the rules."""
     for rule in rules:
+
         res = None
+
         try:
             res = simple_handler(sent_tree, rule)
         except:
             pass
+
         if type(res) == str:
             return res
+
     return "Sorry, I don't get it"
 
 
-def simple_handler(sent_tree: Tree, rule):
+def simple_handler(sent_tree: Tree, rule) -> str:
+    """Handle one rule."""
+
     if not (compare_templates(sent_tree, rule['if'])):
         return False
 
@@ -58,8 +73,10 @@ def simple_handler(sent_tree: Tree, rule):
             answer_list.append(var[ans_part[1:]])
         else:
             answer_list.append(ans_part)
+
     answer = "".join(answer_list)
     answer = answer[0].upper() + answer[1:]
+
     return answer
 
 

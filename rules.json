@@ -1,0 +1,105 @@
+[
+  {
+    "if": [
+      "(*\n    (WHADVP (WRB How))\n    (SQ\n\n        (* (VB get) )\n        )\n    )\n    "
+    ],
+    "then": {
+      "var": {
+        "place": "(*\n(VP (VB get) (PP  (NP @)))\n)"
+      },
+      "answer": [
+        "You can find route to the ",
+        "~place",
+        " in the map with this link: www.google.com/maps/place/"
+      ]
+    }
+  },
+  {
+    "if": [
+      "\n(*\n  (SBARQ\n(WHADVP (WRB Where))\n(* \n    (NN ticket) \n           \n)\n(. ?)))",
+      "\n(*\n  (SBARQ\n(WHADVP (WRB Where))\n(* \n    (NNS tickets) \n           \n)\n(. ?)))"
+    ],
+    "then": {
+      "var": {
+        "np": "(*\n(SBARQ\n(WHADVP (WRB Where))\n(SQ \n    (MD *)\n    (NP @)\n\n)\n(. ?)))",
+        "md": "(*\n(SBARQ\n  (WHADVP (WRB Where))\n  (SQ \n      (MD @)\n\n\n  )\n  (. ?)))",
+        "vp": "(*\n(SBARQ\n  (WHADVP (WRB Where))\n  (SQ \n      (MD *)\n      (NP *)\n      (VP @)\n\n\n  )\n  (. ?)))"
+      },
+      "answer": [
+        "~np",
+        " ",
+        "~md",
+        " ",
+        "~vp",
+        " here: https://concert.ua/uk"
+      ]
+    }
+  },
+  {
+    "if": [
+      "(*(WHADJP (WRB How) (RB *)))"
+    ],
+    "then": {
+      "var": {
+        "rb": "(*(WHADJP (WRB How) (RB @)))"
+      },
+      "answer": [
+        "Not very ",
+        "~rb",
+        ". More details you can find here https://concert.ua/uk"
+      ]
+    }
+  },
+  {
+    "if": [
+      "(*(NN *))"
+    ],
+    "then": {
+      "var": {
+        "nn": "(*(NN @))"
+      },
+      "answer": [
+        "What does the ",
+        "~nn",
+        " means?"
+      ]
+    }
+  },
+  {
+    "if": [
+      "(*(NN *))"
+    ],
+    "then": {
+      "var": {
+        "nn": "(*(NN @))"
+      },
+      "answer": [
+        "Sorry, I don`t understand word '",
+        "~nn",
+        "'. Can you explain?"
+      ]
+    }
+  },
+  {
+    "if": [
+      "\n(*\n  (SBARQ\n(WHADVP (WRB Where))\n(* \n    (NN ticket) \n           \n)\n(. ?)))",
+      "\n(*\n  (SBARQ\n(WHADVP (WRB Where))\n(* \n    (NNS tickets) \n           \n)\n(. ?)))"
+    ],
+    "then": {
+      "var": {
+        "np": "(*\n(SBARQ\n(WHADVP (WRB Where))\n(SQ \n    (MD *)\n    (NP @)\n\n)\n(. ?)))",
+        "md": "(*\n(SBARQ\n  (WHADVP (WRB Where))\n  (SQ \n      (MD @)\n\n\n  )\n  (. ?)))",
+        "vp": "(*\n(SBARQ\n  (WHADVP (WRB Where))\n  (SQ \n      (MD *)\n      (NP *)\n      (VP @)\n\n\n  )\n  (. ?)))"
+      },
+      "answer": [
+        "~np",
+        " ",
+        "~md",
+        " ",
+        "~vp",
+        " here: https://concert.ua/uk"
+      ]
+    }
+  }
+
+]
